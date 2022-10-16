@@ -8,18 +8,18 @@ import '@splidejs/react-splide/css';
 function Veggies() {
     const [veggie, setVeggie] = useState([])
    const getVeggie = async()=>{
-    const check = localStorage.getItem('veggie');
-    if(check){
-        setVeggie(JSON.parse(check))
-    }else{
+    // const check = localStorage.getItem('veggie');
+    // if(check){
+    //     setVeggie(JSON.parse(check))
+    // }else{
 
         const api = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=10`)
         const data = await api.json()
         // console.log(data)
-        localStorage.setItem("veggie", JSON.stringify(data.recipes))
+    //     localStorage.setItem("veggie", JSON.stringify(data.recipes))
+    //     setVeggie(data.recipes)
+    // }
         setVeggie(data.recipes)
-    }
-
     }
     useEffect(()=>{
         getVeggie()
